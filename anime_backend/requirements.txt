@@ -1,0 +1,4 @@
+Django>=3.2
+django-cors-headers>=3.13
+openai
+# Any other Python dependencies...

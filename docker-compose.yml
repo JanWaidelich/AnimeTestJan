@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  anime_backend:
+    build: ./anime_backend
+    container_name: anime_backend_container
+    ports:
+      - "8000:8000"
+    environment:
+      - ALLOWED_HOSTS=*
+      # - OPENAI_API_KEY=${OPENAI_API_KEY}   # Uncomment & use if needed
+    volumes:
+      - ./anime_backend:/app
+
+  anime_frontend:
+    build: ./anime_frontend
+    container_name: anime_frontend_container
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./anime_frontend:/app
+    depends_on:
+      - anime_backend
